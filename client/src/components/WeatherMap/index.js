@@ -152,8 +152,9 @@ const WeatherMap = ({ zoom, dark }) => {
       {mapTimestamp ? (
         <TileLayer
           attribution='<a href="https://www.rainviewer.com/">RainViewer</a>'
-          url={`https://tilecache.rainviewer.com/v2/radar/${mapTimestamp}/{size}/{z}/{x}/{y}/{color}/{smooth}_{snow}.png`}
+          url={`https://tilecache.rainviewer.com${mapTimestamp}/512/{z}/{x}/{y}/6/1_1.png`}
           opacity={0.3}
+          maxNativeZoom={7}
           size={512}
           color={6} // https://www.rainviewer.com/api.html#colorSchemes
           smooth={1}
@@ -213,9 +214,11 @@ function hasVal(i) {
 function getMapTimestamps() {
   return new Promise((resolve, reject) => {
     axios
-      .get("https://api.rainviewer.com/public/maps.json")
+      .get("https://api.rainviewer.com/public/weather-maps.json")
       .then((res) => {
-        resolve(res.data);
+        const timestamps = res.data.radar.past.map(item => item.path);
+        //resolve(res.data);
+        resolve(timestamps);
       })
       .catch((err) => {
         reject(err);
