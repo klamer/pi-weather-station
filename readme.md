@@ -1,6 +1,8 @@
 
 # Pi Weather Station
 
+> **Note:** This is a fork of [elewin/pi-weather-station](https://github.com/elewin/pi-weather-station), which is no longer maintained.
+
 This is a weather station designed to be used with a Raspberry Pi on the official 7" 800x480 touchscreen.
 
 ![pws-screenshot3](https://user-images.githubusercontent.com/15202038/91359998-4625bb80-e7bb-11ea-937e-c87eede41f35.JPG)
@@ -58,6 +60,12 @@ The server will now serve the app across your network.
 # Do you want to Host this Application in Docker?
 
 Pi Weather Station is available as a Docker Image for AMD64 and ARM infrastructures. see the *ReadME* here for more: https://github.com/SeanRiggs/pi-weather-station/blob/master/Docker%20Image/Docker-ReadMe.md
+
+# Changelog
+
+## 2026-03-29 (klamer fork)
+- Fixed RainViewer weather map by updating to current API (`/public/weather-maps.json`) and correcting tile URL path format
+- Added `maxNativeZoom` to prevent map zoom errors
 
 # License
 
